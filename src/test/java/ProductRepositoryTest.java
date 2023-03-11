@@ -44,6 +44,13 @@ public class ProductRepositoryTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+
+    public void removeByIdWithNoFindId(){
+
+
+        Assertions.assertThrows(NotFoundException.class, ()->{repo.removeById(55);} );
+    }
 
 
 }

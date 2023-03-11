@@ -16,7 +16,18 @@ public class ProductRepository {
         items = tmp;
     }
 
+    public Product findBiId(int id){
+        for(Product item : items){
+            if(item.getId() == id){
+                return item;
+        }
+    }
+    return null;
+}
     public void removeById(int id) {
+        if (findBiId(id) == null){
+            throw new NotFoundException("Товар с ID" + id + "не найден");
+        }
         Product[] tmp = new Product[items.length - 1];
         int copyToIndex = 0;
         for (Product item : items) {
